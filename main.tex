@@ -1,0 +1,46 @@
+% \pdfoutput=1
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[acmsmall,nonacm]{acmart}
+
+\usepackage{stmaryrd}
+\setcitestyle{numbers,sort&compress}
+
+% my header
+\input{header}
+\input{plotdata}
+\input{data_scalability}
+\input{data_batching}
+\input{data_geo_scale_tpcc}
+\input{data_geo_scale_ycsb}
+\input{data_network_delay_1ms}
+\input{data_network_delay_5ms}
+\input{data_network_delay_50ms}
+\input{data_network_delay_500ms}
+\input{data_geographical_deployment}
+\input{data_leader_slowness_10ms}
+\input{data_leader_slowness_100ms}
+\input{data_tailforking}
+\input{data_rollback}
+%%
+
+\title{ACM SIGMOD Availability \& Reproducibility Initiative: \textsc{HotStuff-1}: Linear Consensus with One-Phase Speculation}
+
+
+
+\begin{abstract}
+    This works provides commands to draw result figures of HotStuff-1~\cite{hs1}, which is for the convenience of the ACM SIGMOD Availability \& Reproducibility Initiative.
+\end{abstract}
+
+\begin{document}
+
+\maketitle
+
+\input{eval}
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sources}
+
+\end{document}
+
+

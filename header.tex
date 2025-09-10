@@ -1,0 +1,334 @@
+% \usepackage[hidelinks]{hyperref}
+\let\Bbbk\relax
+\usepackage{amssymb}
+% \IEEEoverridecommandlockouts
+%% Theorem-like environments.
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage{xspace}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem*{assumption}{Assumption}
+
+\usepackage{adjustbox}
+%%
+\newcommand{\Changed}[1]{{\color{blue}#1}}
+
+\newcommand{\Paragraph}[1]{\emph{#1}}
+
+%% SI units and transaction notation.
+\usepackage[binary-units]{siunitx}
+\DeclareSIUnit{\txn}{txn}
+\DeclareSIUnit{\batch}{batch}
+\sisetup{per-mode=symbol}
+
+\graphicspath{{./DrawIO/}}
+
+%% Fully-replicated systems.
+\newcommand{\Replica}[1][r]{\MakeUppercase{#1}}
+\newcommand{\Client}[1][c]{\MakeLowercase{#1}}
+\newcommand{\Replicas}[1][r]{\mathfrak{\MakeUppercase{#1}}}
+\newcommand{\ID}[1]{\mathop{\textsf{id}}(#1)}
+\newcommand{\T}{\tau}
+\newcommand{\ma}{\mathbf{a}}
+\newcommand{\m}{\mathbf{m}}
+\newcommand{\n}{\mathbf{n}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\nf}{\mathbf{nf}}
+\newcommand{\Instance}[1]{\mathcal{I}_{#1}}
+\newcommand{\Primary}[1]{\mathcal{L}_{#1}}
+
+%% Protocol description.
+\newcommand{\Transaction}{T}
+\newcommand{\SignMessage}[2]{\langle#1\rangle_{#2}}
+\newcommand{\View}{v}
+\newcommand{\rn}{\rho}
+\newcommand{\Leader}[1]{\mathcal{L}_{#1}}
+\newcommand{\StopOp}{\texttt{stop}}
+\newcommand{\Stop}[2]{\StopOp(#1; #2)}
+\newcommand{\Message}[2]{\textsc{#1},#2}
+\newcommand{\Hash}[1]{\operatorname{digest}(#1)}
+
+%% Protocol names
+\newcommand{\Name}[1]{\textnormal{\textsc{#1}}}
+\newcommand{\BFT}{BFT}
+\newcommand{\PBFT}{\Name{PBFT}}
+\newcommand{\PoE}{\Name{PoE}}
+\newcommand{\HS}{\Name{HotStuff}}
+\newcommand{\HSTwo}{\Name{HotStuff-2}}
+\newcommand{\HSOne}{\Name{HotStuff-1}}
+\newcommand{\sysname}{\Name{HotStuff-1}}
+\newcommand{\PHsysname}{\Name{Streamlined TrailBlazer}}
+\newcommand{\SHSOne}{\Name{Streamlined HotStuff-1}}
+\newcommand{\BHSOne}{\Name{Basic HotStuff-1}}
+\newcommand{\BHSTwo}{\Name{Basic HotStuff-2}}
+\newcommand{\PHSOne}{\Name{Streamlined HotStuff-1}}
+\newcommand{\PHSTwo}{\Name{Chained HotStuff-2}}
+\newcommand{\CHS}{\Name{CHotStuff}}
+\newcommand{\SBFT}{\Name{Sbft}}
+\newcommand{\Narwhal}{\Changed{\Name{Narwhal-HS}}}
+\newcommand{\RBFT}{\Name{Rbft}}
+\newcommand{\RCC}{\Name{RCC}}
+\newcommand{\SpotLess}{\Name{SpotLess}}
+\newcommand{\CSpotLess}{\Name{CSpotLess}}
+\newcommand{\MirBFT}{\Name{MirBFT}}
+\newcommand{\ISS}{\Name{ISS}}
+\newcommand{\RDB}{\Name{Apache ResilientDB}}
+\newcommand{\Bitcoin}{\Name{Bitcoin}}
+\newcommand{\Ethereum}{\Name{Ethereum}}
+\newcommand{\MinBFT}{\Name{MinBFT}}
+\newcommand{\MDLG}{DLG}
+\newcommand{\Slotter}{Slotter}
+
+\newcommand{\helper}{helper\xspace}
+\newcommand{\Helper}{Helper\xspace}
+
+
+\newcommand{\earlycap}{Early Finality Confirmation}
+\newcommand{\early}{early finality confirmation}
+\newcommand{\strongspec}{Prefix Speculation}
+
+
+%% Shorthands.
+\newcommand{\SH}[1]{\texttt{#1}}
+\newcommand{\MAC}{\SH{MAC}}
+\newcommand{\DS}{\SH{DS}}
+\newcommand{\RDMS}{\SH{RDMS}}
+\newcommand{\GST}{\SH{GST}}
+
+%% Sub-protocols.
+\newcommand{\Protocol}{\Name{P}}
+\newcommand{\RVS}{\Name{RVS}}
+\newcommand{\Chained}{\Name{Chained}}
+\newcommand{\LSO}{\Name{LSO}}
+\newcommand{\IQC}[1]{$inQC_{#1}$}
+\newcommand{\EQC}[1]{$exQC_{#1}$}
+\newcommand{\Cert}[2]{\llparenthesis#1\rrparenthesis_{#2}}
+\newcommand{\Certificate}[1]{\mathcal{P}(#1)}
+\newcommand{\CCertificate}[1]{\mathcal{C}(#1)}
+\newcommand{\Pending}{\mathcal{T}}
+
+%% Theory-throughput parameters
+\newcommand{\Bandwidth}{\mathit{B}}
+\newcommand{\TP}[1]{\mathit{T}_{#1}}
+\newcommand{\SizeP}{\mathit{sp}}
+\newcommand{\SizeQ}{\mathit{sq}}
+\newcommand{\SizeN}{\mathit{sn}}
+\newcommand{\SizeM}{\mathit{sm}}
+\newcommand{\SizeT}{\mathit{st}}
+\newcommand{\SizeS}{\mathit{ss}}
+\newcommand{\Max}{\textnormal{max}}
+\newcommand{\CMax}{\textnormal{cmax}}
+\newcommand{\CPBFT}{\textnormal{c}\PBFT{}}
+
+%% pseudocode parameters
+\newcommand{\VoteQC}[1]{\mathit{VoteQC}_{#1}}
+\newcommand{\SyncQC}[1]{\mathit{SyncQC}_{#1}}
+%% Misc.
+\newcommand{\abs}[1]{\lvert #1 \rvert}
+\newcommand{\dsfrac}[2]{#1 / #2}
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\difference}{\setminus}
+\newcommand{\Concat}{\oplus}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\lfref}[2]{Line~\ref{#1:#2} of Figure~\ref{#1}}
+\newcommand{\subref}[2]{\ref{#1}.\ref{#1:#2}}
+\newcommand{\alglineref}[2]{Figure~\ref{#1}, Line~\ref{#1:#2}}
+
+\newcommand{\cmt}[1]{{\color{red} #1}}
+
+\newcommand{\Good}{\cellcolor{green!20}}
+
+%% SpotLess
+\renewcommand{\v}[1][v]{#1}
+\newcommand{\MName}[1]{\textsc{#1}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\PPproof}[1]{\operatorname{cert}(#1)}
+\newcommand{\PPf}[1]{\operatorname{claim}(#1)}
+\newcommand{\AcceptedSet}{\mathbb{CP}}
+\newcommand{\SClaim}[1]{\operatorname{sclaim}(#1)}
+\newcommand{\CProof}[1]{\operatorname{cproof}(#1)}
+\newcommand{\Proposals}[1]{\operatorname{proposals}(#1)}
+\newcommand{\Support}[2]{\operatorname{support}(#1, #2)}
+\newcommand{\Precedes}[1]{\operatorname{precedes}(#1)}
+\newcommand{\Depth}[1]{\operatorname{depth}(#1)}
+\newcommand{\RVar}[2]{\textit{#1}_{#2}}
+\newcommand{\digest}[1]{\operatorname{digest}(#1)}
+\newcommand{\view}[1]{\operatorname{view}(#1)}
+\newcommand{\timer}[1]{\textit{t}_{#1}}
+\newcommand{\Share}[2]{\delta_{#1}^{\mathcal{#2}}}
+
+
+\newcommand{\twat}{\textit{txns\_w\_assigned\_timestamp}}
+\newcommand{\twoat}{txns\_wo\_assigned\_timestamp}
+\newcommand{\hts}{highest\_timestamps}
+\newcommand{\txnts}{transactions\_to\_send}
+\newcommand{\lotm}{local\_timer}
+\newcommand{\asts}{\emph{assigned timestamp}}
+\newcommand{\lpat}{\emph{lowest possible assigned timestamp}}
+
+%% Backup-continue counter
+\newcounter{mycounterf}
+
+\usepackage[noend]{algorithmic}
+\usepackage{algorithm,float}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithmic}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithmic}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithmic}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+%% Protocol/Algorithm environment
+\usepackage{algorithmic}
+\renewcommand{\algorithmiccomment}[1]{{\color{orange}$\triangleright$\textit{#1}}}
+\newcommand{\GETS}{:=}
+\newenvironment{myprotocol}{
+    \hrule
+    \footnotesize
+    \smallskip
+    \algsetup{linenosize=\footnotesize}
+    \begin{algorithmic}[1]
+        \newenvironment{algenumerate}{\begin{enumerate}}{\end{enumerate}}
+        \newcommand{\SPACE}{\item[]}
+        \newcommand{\TITLE}[2]{\item[] \textbf{\underline{##1}} (##2) \textbf{:}\\[2pt]}
+        \makeatletter
+            \newcommand{\EVENT}[1]{\STATE \textbf{event} ##1 \textbf{do}\begin{ALC@g}}
+            \newcommand{\ENDEVENT}{\end{ALC@g}}
+        \makeatother
+        \newcommand{\HSPCEVENT}{\phantom{\textbf{event} }}
+        \makeatletter
+            \newcommand{\FUNCTION}[2]{\STATE \textbf{function} \Name{##1}(##2) \textbf{do}\begin{ALC@g}}
+            \newcommand{\ENDFUNCTION}{\end{ALC@g}}
+        \makeatother
+}{
+    \end{algorithmic}%
+    \hrule
+}
+% \newenvironment{myprotocol}{
+%     \hrule
+%     \smallskip
+%     \footnotesize
+%     \algsetup{linenosize=\footnotesize}
+%     \begin{algorithmic}[1]
+%         \newcommand{\SPACE}{\item[]}
+%         \newcommand{\BREAKLINE}{\\\hspace{1cm}}
+%         \newcommand{\TITLE}[2]{\item[] \textbf{\underline{##1}} (##2) \textbf{:}\\[2pt]}
+%         \makeatletter
+%             \newcommand{\EVENT}[1]{\STATE \textbf{event} ##1 \textbf{do}}
+%             \newcommand{\ENDEVENT}{ \STATE \textbf{end event}}
+%         \makeatother
+% }{
+%     \end{algorithmic}
+%     \smallskip
+%     \hrule
+% }
+\newcommand{\spa}{\hspace{\algorithmicindent}}
+
+%% Figures and plots.
+\usepackage{tikz,pgfplots,pgfplotstable}
+
+\usetikzlibrary{shapes,arrows,automata,positioning,cd}
+\tikzset{
+  spotlessedge/.style   = {black, ->, >=stealth},
+}
+\usepackage{xcolor}
+
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
+\tikzset{
+    >=Stealth,
+    smalltext/.append style={scale=0.7},
+    dot/.style={circle,scale=0.35,draw=black,fill=black}
+}
+
+\usetikzlibrary{automata, positioning, arrows}
+\usetikzlibrary{arrows.meta}
+\tikzset{
+    >=Stealth,
+    plot/.append style={baseline,scale=0.475},
+    label/.append style={font=\strut\footnotesize},
+    dot/.style={circle,scale=0.35,draw=black,fill=black},
+}
+\pgfplotscreateplotcyclelist{mycyclelist}{
+    black   ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=*\\ 
+    red     ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=square*\\
+    blue    ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=triangle*\\
+    teal    ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=pentagon*\\
+    brown   ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=halfsquare*\\ 
+    orange  ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=halfcircle*\\
+    violet  ,every mark/.append style={solid,fill=\pgfplotsmarklistfill,rotate=180},mark=halfdiamond*\\
+}
+\pgfplotscreateplotcyclelist{mycyclelistex}{
+    black   ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=*\\ 
+    red     ,every mark/.append style={solid,fill=\pgfplotsmarklistfill},mark=square*\\
+}
+\pgfplotsset{
+    tick label style={font=\large},
+    legend style={font=\Large,cells={anchor=west}},
+    title style={font=\Large},
+    label style={font=\Large},
+    width=262.5pt,
+    height=185pt,
+    every axis/.append style={
+        ylabel near ticks,
+        xlabel near ticks,
+        mark size=2.5pt,
+        cycle list name=mycyclelist,
+        font=\Large,
+        y tick label style={
+                        /pgf/number format/precision=1,
+                        /pgf/number format/fixed,
+                        /pgf/number format/fixed zerofill
+                    }
+    },
+    barstyle/.append style={
+        ybar,
+        bar width={0.5cm},
+        enlarge x limits=0.4,
+        enlarge y limits={upper=0.025},
+        ymin=0,
+        xtick=data
+    }
+}
+
+\newcommand{\plotTheoryTPut}[2]{\begin{tikzpicture}[plot]
+        \begin{axis}[title={($\SI{#1}{\txn\per\text{batch}}$)},ylabel={Throughput (\si{\txn\per\second})},
+            xlabel={Number of replicas ($\n$)},ymax=700000, ymin=0,mark size=1pt,legend columns=1, title style={font=\huge},
+            xlabel style={font=\huge}, legend style={at={(0.6,0.85)},anchor=west}]
+            \addplot table[x={n},y={spotless}] {#2};
+            \addplot table[x={n},y={rvs}] {#2};
+            \legend{$\TP{\SpotLess}$, $\TP{\RVS}$};
+        \end{axis}
+    \end{tikzpicture}}
+    
+    
+\newcommand{\axisticksnode}{16, 22, 28, 34}
+
+\newcommand{\ploteViewSync}[2]{\begin{tikzpicture}[plot, scale = 0.98]
+    \begin{axis}[title={#1},ylabel={View Synchronization Time (\si{\second})},xlabel={Number of replicas ($\n$)},ymin=0,mark size=0.8pt,legend columns=2, xtick={\axisticksnode}, legend style={at={(0.03,0.9)},anchor=west}]
+        \addplot table[x={n},y={hs}] {#2};
+        \addplot table[x={n},y={rvs}] {#2};
+        \legend{\Chained{} \HS{},\RVS{}};
+    \end{axis}
+\end{tikzpicture}}
+
+
+

@@ -1,0 +1,128 @@
+
+
+\section{Evaluation Figures}\label{sec:eval}
+
+
+
+
+\subsection{Scalability}
+\label{sssec:tput_rep}
+
+\begin{figure*}[h]
+    \centering
+    \scalebox{0.5}{\ref{mainlegend4}}\\[5pt]
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{cccc}
+        % Column 1
+        \begin{tabular}{@{}c@{}}
+            \throughputgraphb{\scalabiltyThroughput}{(a) Scalability}{\axisnodes}{Throughput (txn/s)}{\axisticksnodesb} \\[4pt]
+            \geothroughputgraph{\geoscaleThroughputYCSB}{(e) Geo-Scale + YCSB}{\axisregions}{Throughput (txn/s)}{\axisticksregions}
+        \end{tabular}
+        &
+        % Column 2
+        \begin{tabular}{@{}c@{}}
+            \latencygraph{\scalabiltyLatency}{(b) Scalability}{\axisnodes}{Client Latency (ms)}{\axisticksnodesb} \\[4pt]
+            \geolatencygraph{\geoscaleLatencyYCSB}{(f) Geo-Scale + YCSB}{\axisregions}{Client Latency (s)}{\axisticksregions}
+        \end{tabular}
+        &
+        % Column 3
+        \begin{tabular}{@{}c@{}}
+            \batchsizegraph{\batchingThroughput}{(c) Batching}{\axisbatches}{Throughput (txn/s)}{100, 1000, 2000, 5000, 10000} \\[4pt]
+            \geothroughputgraph{\geoscaleThroughputTPCC}{(g) Geo-Scale + TPC-C}{\axisregions}{Throughput (txn/s)}{\axisticksregions}
+        \end{tabular}
+        &
+        % Column 4
+        \begin{tabular}{@{}c@{}}
+            \batchsizeLatgraph{\batchingLatency}{(d) Batching}{\axisbatches}{Client Latency (ms)}{100, 1000, 2000, 5000, 10000} \\[4pt]
+            \geolatencygraph{\geoscaleLatencyTPCC}{(h) Geo-Scale + TPC-C}{\axisregions}{Client Latency (s)}{\axisticksregions}
+        \end{tabular}
+    \end{tabular}
+    \caption{Scalability Plots.}
+    \label{fig:throughput}
+\end{figure*}
+
+\newpage
+
+\subsection{Impact of the $\f$ Additional Responses}
+
+\begin{figure*}[h]
+    \centering
+    \scalebox{0.5}{\ref{mainlegend4}}\\[3pt]
+    \setlength{\tabcolsep}{2pt}  % reduced column spacing
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{@{}c@{}c@{}c@{}c@{}c@{}}  % tighter column spacing
+        % Column 1
+        \begin{tabular}{@{}c@{}}
+            \networkdelaytesttput{\networkdelayThroughputOne}{(a) Inject $1$ms Delay}{Number of Impacted Replicas}{Throughput (txn/s)} \\
+            \networkdelaytestlat{\networkdelayLatencyOne}{(f) Inject $1$ms Delay}{Number of Impacted Replicas}{Latency (s)}
+        \end{tabular}
+        &
+        % Column 2
+        \begin{tabular}{@{}c@{}}
+            \networkdelaytesttput{\networkdelayThroughputFive}{(b) Inject $5$ms Delay}{Number of Impacted Replicas}{Throughput (txn/s)} \\
+            \networkdelaytestlat{\networkdelayLatencyFive}{(g) Inject $5$ms Delay}{Number of Impacted Replicas}{Latency (s)}
+        \end{tabular}
+        &
+        % Column 3
+        \begin{tabular}{@{}c@{}}
+            \networkdelaytesttput{\networkdelayThroughputFifty}{(c) Inject $50$ms Delay}{Number of Impacted Replicas}{Throughput (txn/s)} \\
+            \networkdelaytestlat{\networkdelayLatencyFifty}{(h) Inject $50$ms Delay}{Number of Impacted Replicas}{Latency (s)}
+        \end{tabular}
+        &
+        % Column 4
+        \begin{tabular}{@{}c@{}}
+            \networkdelaytesttput{\networkdelayThroughputFiveHundred}{(d) Inject $500$ms Delay}{Number of Impacted Replicas}{Throughput (txn/s)} \\
+            \networkdelaytestlat{\networkdelayLatencyFiveHundred}{(i) Inject $500$ms Delay}{Number of Impacted Replicas}{Latency (s)}
+        \end{tabular}
+        &
+        % Column 5
+        \begin{tabular}{@{}c@{}}
+            \networkdelaytesttput{\geographicalThroughput}{(e) Geographical Deployment}{Number of London Replicas}{Throughput (txn/s)} \\
+            \networkdelaytestlat{\geographicalLatency}{(j) Geographical Deployment}{Number of London Replicas}{Latency (s)}
+        \end{tabular}
+    \end{tabular}
+    \caption{Performance with Varying Network Conditions.}
+    \label{fig:networkdelaytest}
+\end{figure*}
+
+\newpage
+\subsection{Failure Resiliency}
+\label{ss:eval-failures}
+%Next, we study the impact of various failures and attacks.
+
+\begin{figure*}[h]
+    \centering
+    \scalebox{0.5}{\ref{falegend}}\\[5pt]
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.0}
+    \begin{tabular}{cccc}
+        % Column 1
+        \begin{tabular}{@{}c@{}}
+            \nonresponsivegraph{\leaderslownessThroughputTen}{(a) Leader slowness (timer 10ms)}{Number of Slow Leaders}{Throughput (txn/s)}{\axistickslows} \\[4pt]
+            \forktailgraph{\tailforkingThroughput}{(e) Tail-forking}{Number of Faulty Leaders}{Throughput (txn/s)}{\axistickslows}
+        \end{tabular}
+        &
+        % Column 2
+        \begin{tabular}{@{}c@{}}
+            \nonresponsivelatgraph{\leaderslownessLatencyTen}{(b) Leader slowness (timer 10ms)}{Number of Slow Leaders}{Client Latency (ms)}{\axistickslows} \\[4pt]
+            \forktailgraph{\tailforkingLatency}{(f) Tail-forking}{Number of Faulty Leaders}{Client Latency (ms)}{\axistickslows}
+        \end{tabular}
+        &
+        % Column 3
+        \begin{tabular}{@{}c@{}}
+            \nonresponsivegraphb{\leaderslownessThroughputHundred}{(c) Leader slowness (timer 100ms)}{Number of Slow Leaders}{Throughput (txn/s)}{\axistickslows} \\[4pt]
+            \forktailgraph{\rollbackThroughput}{(g) Rollback}{Number of Faulty Leaders}{Throughput (txn/s)}{\axistickslows}
+        \end{tabular}
+        &
+        % Column 4
+        \begin{tabular}{@{}c@{}}
+            \nonresponsivelatgraphb{\leaderslownessLatencyHundred}{(d) Leader slowness (timer 100ms)}{Number of Slow Leaders}{Client Latency (ms)}{\axistickslows} \\[4pt]
+            \forktailgraph{\rollbackLatency}{(h) Rollback}{Number of Faulty Leaders}{Client Latency (ms)}{\axistickslows}
+        \end{tabular}
+    \end{tabular}
+    \caption{Impact of varying the number of faulty replicas (leader slowness, tail-forking, and rollback).}
+    \label{fig:fault}
+\end{figure*}
+
+\newpage
